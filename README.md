@@ -12,8 +12,9 @@ docker run --name mosquitto -it \
     -e DOMAIN=mosquitto.cloud-native.pl \
     -e EMAIL=me@domain.com \
     -e UID=$UID \
-    -v /path/to/my/root/:/root \
-    -v /root/s6/root/mosquitto.conf:/mosquitto/mosquitto.conf \
+    -v letsencrypt:/root/.caddy \
+    -v caddyfile:/etc/services.d/caddy/caddyfile
+    -v mosquitto.conf.template:/mosquitto/mosquitto.conf.template \
     -p 80:80 \
     -p 443:443 \
     -p 8080:8080 \
@@ -22,8 +23,14 @@ docker run --name mosquitto -it \
     -p 8883:8883 \
      pythonlinks/letsencrypt-mosquitto:test
 
-#    IF YOU WANT TO SERVE YOUR OWN WEB FILES
-#    -v /root/s6/www:/var/www \
+#  Where 
+     letsencrypt is where the lets encrypt certificates and keys are stored.
+     caddyfile is what you edit to change how the web server works
+     mosquitto.conf.template is what you edit to change the configuration of the 
+                             configuration of the mosquitto broker.
+
+#    IF YOU WANT TO SERVE YOUR OWN WEB FILES ADD THE FOLLOWING LINE
+#    -v /path/to/your/website/:/var/www/ \
 
 #    AND HERE IS DOCUMENTATION OF THE VARIOUS PORTS
 #    -p 80:80       # HTTP  serve files from /var/www
@@ -35,6 +42,7 @@ docker run --name mosquitto -it \
 
 
 `
+
 Inside the docker container there is one defined user, the operator.  
 The operator has the same user id as the account which starts the container. 
 
@@ -43,5 +51,11 @@ The operator has the same user id as the account which starts the container.
 
 
 There is always an issue with OS and docker permissions conflicting.
-Traditionally web is served from group 
+So I made the operator unix id to be the same as the account which starts the docker 
+container.  And I made the group to be www-data which is traditionally used for 
+serving web content.  
+
+   <p> Please <a href="mailto:lozinski@PythonLinks.info">send me an email</a>
+if you have any questions.
+</p>    
 
