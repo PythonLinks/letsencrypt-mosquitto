@@ -1,9 +1,7 @@
 # LetsEncrypt Mosquitto Docker Container  
 
-This Docker Container makes it really easy to create encrypted connections to an MQTT server.  It uses lets encrypt to generate certificates which the Mosquitto MQTT broker then uses.
-
-This docker container includes both the Caddy web server and the Mosquitto MQTT broker.  The caddy web server generates the ssl certificates, which the
-mosquitto broker then uses. 
+This Docker Container makes it really easy to create encrypted connections to an MQTT server.  It uses the caddy web server to generate lets encrypt certificates which the Mosquitto MQTT broker then uses.  You can also serve files using the
+caddy web server.  
 
 The idea is to make life as easy as possible for you, the user. Here is the command to run the container.  
 
@@ -14,7 +12,7 @@ docker run --name mosquitto -it \
     -e UID=$UID \
     -v letsencrypt:/root/.caddy \
     -v caddyfile:/etc/services.d/caddy/caddyfile
-    -v mosquitto.conf.template:/mosquitto/mosquitto.conf.template \
+    -v mosquitto:/mosquitto \
     -p 80:80 \
     -p 443:443 \
     -p 8080:8080 \
@@ -24,10 +22,14 @@ docker run --name mosquitto -it \
      pythonlinks/letsencrypt-mosquitto:test
 
 #  Where 
-     letsencrypt is where the lets encrypt certificates and keys are stored.
-     caddyfile is what you edit to change how the web server works
-     mosquitto.conf.template is what you edit to change the configuration of the 
-                             configuration of the mosquitto broker.
+#     letsencrypt is where the lets encrypt certificates and keys are stored.
+#     caddyfile is what you edit to change how the web server works
+#     mosquitto.conf.template is what you edit to change the configuration of the 
+#                             configuration of the mosquitto broker.
+
+#     You can then see where to find and edit the data volumes using 
+#      docker volume inspect caddyfile
+#      docker volume inspect mosquitto
 
 #    IF YOU WANT TO SERVE YOUR OWN WEB FILES ADD THE FOLLOWING LINE
 #    -v /path/to/your/website/:/var/www/ \
