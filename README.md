@@ -22,7 +22,7 @@ docker run --name mosquitto -it \
      pythonlinks/letsencrypt-mosquitto:latest
 
 
-  Where 
+#  Where 
 #     letsencrypt is where the lets encrypt certificates and keys are stored.
 #     caddyfile is what you edit to change how the web server works
 #     mosquitto.conf.template is what you edit to change the configuration of the 
