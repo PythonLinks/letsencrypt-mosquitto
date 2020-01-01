@@ -5,8 +5,7 @@ caddy web server.
 
 The idea is to make life as easy as possible for you, the user. Here is the command to run the container.  
 
-`
-
+```
 docker run --name mosquitto -it \\  
     -e DOMAIN=mosquitto.cloud-native.pl \\  
     -e EMAIL=me@domain.com \\  
@@ -22,7 +21,8 @@ docker run --name mosquitto -it \\
     -p 8883:8883 \\  
      pythonlinks/letsencrypt-mosquitto:latest
 
-\#  Where 
+
+  Where 
 \#     letsencrypt is where the lets encrypt certificates and keys are stored.
 \#     caddyfile is what you edit to change how the web server works
 \#     mosquitto.conf.template is what you edit to change the configuration of the 
@@ -43,7 +43,7 @@ docker run --name mosquitto -it \\
 \#    -p 1883:1883   # MQTT No Encryption 
 \#    -p 8883:8883   # MQTT Encrypted/
 
-`
+```
 
 Inside the docker container there is one defined user, the operator.  
 The operator has the same user id as the account which starts the container. 
