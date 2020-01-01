@@ -22,11 +22,11 @@ docker run --name mosquitto -it \\
     -p 8883:8883 \\  
      pythonlinks/letsencrypt-mosquitto:latest
 
-\#  Where 
-\#     letsencrypt is where the lets encrypt certificates and keys are stored.
-\#     caddyfile is what you edit to change how the web server works
-\#     mosquitto.conf.template is what you edit to change the configuration of the 
-\#                             configuration of the mosquitto broker.
+  Where 
+     letsencrypt is where the lets encrypt certificates and keys are stored.
+     caddyfile is what you edit to change how the web server works
+     mosquitto.conf.template is what you edit to change the configuration of the 
+                             configuration of the mosquitto broker.
 
 \#     You can then see where to find and edit the data volumes using 
 \#      docker volume inspect caddyfile
@@ -36,11 +36,17 @@ docker run --name mosquitto -it \\
 \#    -v /path/to/your/website/:/var/www/
 
 \#    AND HERE IS DOCUMENTATION OF THE VARIOUS PORTS
+
 \#    80:80       # HTTP  serve files from /var/www
+
 \#     443:443     # HTTPS serve files from /var/www
+
 \#    8080:8080   # WebSockets No Encryption 
+
 \#    8081:8081   # WebSockets Encrypted
+
 \#    1883:1883   # MQTT No Encryption 
+
 \#    8883:8883   # MQTT Encrypted/
 `
 
