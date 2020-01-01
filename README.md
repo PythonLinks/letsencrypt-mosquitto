@@ -5,8 +5,8 @@ caddy web server.
 
 The idea is to make life as easy as possible for you, the user. Here is the command to run the container.  
 
-`
 
+`
 docker run --name mosquitto -it \\  
     -e DOMAIN=mosquitto.cloud-native.pl \\  
     -e EMAIL=me@domain.com \\  
@@ -33,24 +33,20 @@ docker run --name mosquitto -it \\
 \#      docker volume inspect mosquitto
 
 \#    IF YOU WANT TO SERVE YOUR OWN WEB FILES ADD THE FOLLOWING LINE
-\#    -v /path/to/your/website/:/var/www\/ \
+\#    -v /path/to/your/website/:/var/www/
 
 \#    AND HERE IS DOCUMENTATION OF THE VARIOUS PORTS
-\#    -p 80:80       # HTTP  serve files from /var/www
-\#    -p 443:443     # HTTPS serve files from /var/www
-\#    -p 8080:8080   # WebSockets No Encryption 
-\#    -p 8081:8081   # WebSockets Encrypted
-\#    -p 1883:1883   # MQTT No Encryption 
-\#    -p 8883:8883   # MQTT Encrypted/
-
+\#    80:80       # HTTP  serve files from /var/www
+\#     443:443     # HTTPS serve files from /var/www
+\#    8080:8080   # WebSockets No Encryption 
+\#    8081:8081   # WebSockets Encrypted
+\#    1883:1883   # MQTT No Encryption 
+\#    8883:8883   # MQTT Encrypted/
 `
+
 
 Inside the docker container there is one defined user, the operator.  
 The operator has the same user id as the account which starts the container. 
-
-
-
-
 
 There is always an issue with OS and docker permissions conflicting.
 So I made the operator unix id to be the same as the account which starts the docker 
