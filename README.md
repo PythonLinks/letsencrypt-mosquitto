@@ -19,7 +19,7 @@ docker run --name mosquitto -it \
     -p 8081:8081 \
     -p 1883:1883 \
     -p 8883:8883 \
-     pythonlinks/letsencrypt-mosquitto:test
+     pythonlinks/letsencrypt-mosquitto:latest
 
 \#  Where 
 \#     letsencrypt is where the lets encrypt certificates and keys are stored.
