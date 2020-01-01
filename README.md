@@ -6,19 +6,19 @@ caddy web server.
 The idea is to make life as easy as possible for you, the user. Here is the command to run the container.  
 
 `
-docker run --name mosquitto -it \
-    -e DOMAIN=mosquitto.cloud-native.pl \
-    -e EMAIL=me@domain.com \
-    -e UID=$UID \
-    -v letsencrypt:/root/.caddy \
-    -v caddyfile:/etc/services.d/caddy/caddyfile
-    -v mosquitto:/mosquitto \
-    -p 80:80 \
-    -p 443:443 \
-    -p 8080:8080 \
-    -p 8081:8081 \
-    -p 1883:1883 \
-    -p 8883:8883 \
+docker run --name mosquitto -it \\  
+    -e DOMAIN=mosquitto.cloud-native.pl \\  
+    -e EMAIL=me@domain.com \\  
+    -e UID=$UID \\  
+    -v letsencrypt:/root/.caddy \\  
+    -v caddyfile:/etc/services.d/caddy/caddyfile \\  
+    -v mosquitto:/mosquitto \\  
+    -p 80:80 \\  
+    -p 443:443 \\  
+    -p 8080:8080 \\  
+    -p 8081:8081 \\  
+    -p 1883:1883 \\  
+    -p 8883:8883 \\  
      pythonlinks/letsencrypt-mosquitto:latest
 
 \#  Where 
