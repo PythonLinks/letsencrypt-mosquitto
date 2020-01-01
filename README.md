@@ -6,42 +6,41 @@ caddy web server.
 The idea is to make life as easy as possible for you, the user. Here is the command to run the container.  
 
 ```
-docker run --name mosquitto -it \\  
-    -e DOMAIN=mosquitto.cloud-native.pl \\  
-    -e EMAIL=me@domain.com \\  
-    -e UID=$UID \\  
-    -v letsencrypt:/root/.caddy \\  
-    -v caddyfile:/etc/services.d/caddy/caddyfile \\  
-    -v mosquitto:/mosquitto \\  
-    -p 80:80 \\  
-    -p 443:443 \\  
-    -p 8080:8080 \\  
-    -p 8081:8081 \\  
-    -p 1883:1883 \\  
-    -p 8883:8883 \\  
+docker run --name mosquitto -it \
+    -e DOMAIN=mosquitto.cloud-native.pl \
+    -e EMAIL=me@domain.com \
+    -e UID=$UID \
+    -v letsencrypt:/root/.caddy \
+    -v caddyfile:/etc/services.d/caddy/caddyfile \
+    -v mosquitto:/mosquitto \
+    -p 80:80 \
+    -p 443:443 \
+    -p 8080:8080 \
+    -p 8081:8081 \
+    -p 1883:1883 \
+    -p 8883:8883 \
      pythonlinks/letsencrypt-mosquitto:latest
 
 
   Where 
-\#     letsencrypt is where the lets encrypt certificates and keys are stored.
-\#     caddyfile is what you edit to change how the web server works
-\#     mosquitto.conf.template is what you edit to change the configuration of the 
-\#                             configuration of the mosquitto broker.
+#     letsencrypt is where the lets encrypt certificates and keys are stored.
+#     caddyfile is what you edit to change how the web server works
+#     mosquitto.conf.template is what you edit to change the configuration of the 
+#                             configuration of the mosquitto broker.
 
-\#     You can then see where to find and edit the data volumes using 
-\#      docker volume inspect caddyfile
-\#      docker volume inspect mosquitto
+#     You can then see where to find and edit the data volumes using 
+#      docker volume inspect caddyfile
+#      docker volume inspect mosquitto
 
-\#    IF YOU WANT TO SERVE YOUR OWN WEB FILES ADD THE FOLLOWING LINE
-\#    -v /path/to/your/website/:/var/www\/ \
+#    IF YOU WANT TO SERVE YOUR OWN WEB FILES ADD THE FOLLOWING LINE
+#    -v /path/to/your/website/:/var/www\/ \
 
-\#    AND HERE IS DOCUMENTATION OF THE VARIOUS PORTS
-\#    -p 80:80       # HTTP  serve files from /var/www
-\#    -p 443:443     # HTTPS serve files from /var/www
-\#    -p 8080:8080   # WebSockets No Encryption 
-\#    -p 8081:8081   # WebSockets Encrypted
-\#    -p 1883:1883   # MQTT No Encryption 
-\#    -p 8883:8883   # MQTT Encrypted/
+#    AND HERE IS DOCUMENTATION OF THE VARIOUS PORTS
+#    -p 80:80       # HTTP  serve files from /var/www
+#    -p 443:443     # HTTPS serve files from /var/www\#    -p 8080:8080   # WebSockets No Encryption 
+#    -p 8081:8081   # WebSockets Encrypted
+#    -p 1883:1883   # MQTT No Encryption 
+#    -p 8883:8883   # MQTT Encrypted/
 
 ```
 
