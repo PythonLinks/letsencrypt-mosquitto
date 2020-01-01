@@ -23,7 +23,7 @@ docker run --name mosquitto -it \\
      pythonlinks/letsencrypt-mosquitto:latest
 `
   Where 
-  `
+  
      letsencrypt is where the lets encrypt certificates and keys are stored.
      caddyfile is what you edit to change how the web server works
      mosquitto.conf.template is what you edit to change the configuration of the 
@@ -49,7 +49,7 @@ docker run --name mosquitto -it \\
 \#    1883:1883   # MQTT No Encryption 
 
 \#    8883:8883   # MQTT Encrypted/
-`
+
 
 
 Inside the docker container there is one defined user, the operator.  
