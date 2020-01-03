@@ -1,6 +1,6 @@
 # Lets Encrypt Mosquitto Docker Container  
 
-[This Docker Container](https://hub.docker.com/r/pythonlinks/letsencrypt-mosquitto) makes it really easy to create encrypted connections to an MQTT server.  It uses the caddy web server to generate lets encrypt certificates which the Mosquitto MQTT broker then uses.  You can also serve files using the include [caddy web server](https://caddyserver.com/v1/).  The idea is to make life as easy as possible for the user. 
+[This Docker Container](https://hub.docker.com/r/pythonlinks/letsencrypt-mosquitto) makes it really easy to create encrypted connections to an MQTT server.  It uses the caddy web server to generate lets encrypt certificates which the Mosquitto MQTT broker then uses.  You can also serve files using the included [caddy web server](https://caddyserver.com/v1/).  The idea is to make life as easy as possible for the mosquitto administrator. 
 
 ## Starting the Broker
 First you need a server on the web.  I recommend Linode.com.  Choose their $5.00/month Ubuntu server.  Follow their instructions for logging in.  Then [install docker on Ubuntu](https://phoenixnap.com/kb/how-to-install-docker-on-ubuntu-18-04).  
