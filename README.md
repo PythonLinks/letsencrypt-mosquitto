@@ -25,28 +25,28 @@ docker run --name mosquitto -it \
 
 ```
  ### Where 
-   **docker run** runs the container 
+   *docker run* runs the container 
    <br>
-   **-it**runs it in the foreground.  That way you can watch what is happeneing. 
-   To run it in the backgroun, use **-d**.  
+   *-it* runs it in the foreground.  That way you can watch what is happeneing. 
+   To run it in the background, use -*d*.  
+   *letsencrypt* is where the lets encrypt certificates and keys are stored. 
    <br>
-   **letsencrypt** is where the lets encrypt certificates and keys are stored. 
+   *caddyfile* is what you edit to change how the web server works 
    <br>
-   **caddyfile** is what you edit to change how the web server works 
-   <br>
-   **mosquitto.conf.template** is what you edit to change the configuration of the  <br>
+   *mosquitto.conf.template* is what you edit to change the configuration of the  <br>
                              configuration of the mosquitto broker.
 ```
-     You can then see where to find and edit the data volumes using 
+You can then see where to find and edit the data volumes using 
       docker volume inspect caddyfile
       docker volume inspect mosquitto
 
-    IF YOU WANT TO SERVE YOUR OWN WEB FILES ADD THE FOLLOWING LINE
+IF YOU WANT TO SERVE YOUR OWN WEB FILES ADD THE FOLLOWING LINE
     -v /path/to/your/website/:/var/www\/ \
 
-    AND HERE IS DOCUMENTATION OF THE VARIOUS PORTS
-    -p 80:80       # HTTP  serve files from /var/www
-    -p 443:443     # HTTPS serve files from /var/www\#    -p 8080:8080   # WebSockets No Encryption 
+AND HERE IS DOCUMENTATION OF THE VARIOUS PORTS
+    -p 80:80       # HTTP  serve files from /var/www/
+    -p 443:443     # HTTPS serve files from /var/www/
+    -p 8080:8080   # WebSockets No Encryption 
     -p 8081:8081   # WebSockets Encrypted
     -p 1883:1883   # MQTT No Encryption 
     -p 8883:8883   # MQTT Encrypted/
