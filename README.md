@@ -36,7 +36,7 @@ docker run --name mosquitto -it \
    *mosquitto* is where the mosquitto configuration files are stored.
 ```
 You can then see where to find and edit the data volumes using 
-      docker volume inspect caddyfile
+      docker volume inspect caddy
       docker volume inspect mosquitto
 
 IF YOU WANT TO SERVE YOUR OWN WEB FILES ADD THE FOLLOWING LINE
