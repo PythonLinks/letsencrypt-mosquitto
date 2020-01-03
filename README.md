@@ -13,7 +13,7 @@ docker run --name mosquitto -it \
     -e EMAIL=your-email-address@your-domain.com \
     -e UID=$UID \
     -v letsencrypt:/root/.caddy \
-    -v caddyfile:/etc/services.d/caddy/caddyfile \
+    -v caddy:/root/.caddy \
     -v mosquitto:/mosquitto \
     -p 80:80 \
     -p 443:443 \
@@ -31,10 +31,9 @@ docker run --name mosquitto -it \
    To run it in the background, use -*d*.  
    *letsencrypt* is where the lets encrypt certificates and keys are stored. 
    <br>
-   *caddyfile* is what you edit to change how the web server works 
+   *caddy* is where caddy stores its config file and certificates
    <br>
-   *mosquitto.conf.template* is what you edit to change the configuration of the  <br>
-                             configuration of the mosquitto broker.
+   *mosquitto* is where the mosquitto configuration files are stored.
 ```
 You can then see where to find and edit the data volumes using 
       docker volume inspect caddyfile
