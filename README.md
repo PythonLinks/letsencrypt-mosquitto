@@ -24,13 +24,17 @@ docker run --name mosquitto -it \
      pythonlinks/letsencrypt-mosquitto:latest
 
 ```
- ###Where 
-     **docker run** runs the container <br>
-     **-it**runs it in the foreground.  That way you can watch what is happeneing. 
-     To run it in the backgroun, use **-d**.  <br>
-     **letsencrypt** is where the lets encrypt certificates and keys are stored. <br>
-     **caddyfile** is what you edit to change how the web server works <br>
-     **mosquitto.conf.template** is what you edit to change the configuration of the  <br>
+ ### Where 
+   **docker run** runs the container 
+   <br>
+   **-it**runs it in the foreground.  That way you can watch what is happeneing. 
+   To run it in the backgroun, use **-d**.  
+   <br>
+   **letsencrypt** is where the lets encrypt certificates and keys are stored. 
+   <br>
+   **caddyfile** is what you edit to change how the web server works 
+   <br>
+   **mosquitto.conf.template** is what you edit to change the configuration of the  <br>
                              configuration of the mosquitto broker.
 ```
      You can then see where to find and edit the data volumes using 
