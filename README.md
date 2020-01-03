@@ -40,7 +40,7 @@ You can then see where to find and edit the data volumes using
       docker volume inspect mosquitto
 
 IF YOU WANT TO SERVE YOUR OWN WEB FILES ADD THE FOLLOWING LINE
-    -v /path/to/your/website/:/var/www\/ \
+    -v /path/to/your/website/:/var/www/ \
 
 AND HERE IS DOCUMENTATION OF THE VARIOUS PORTS
     -p 80:80       # HTTP  serve files from /var/www/
