@@ -2,15 +2,15 @@
 
 [This Docker Container](https://hub.docker.com/r/pythonlinks/letsencrypt-mosquitto) makes it really easy to create encrypted connections to an MQTT server.  It uses the caddy web server to generate lets encrypt certificates which the Mosquitto MQTT broker then uses.  You can also serve files using the include [caddy web server](https://caddyserver.com/v1/).  The idea is to make life as easy as possible for the user. 
 
-## Command Line
+## Starting the Broker
 First you need a server on the web.  I recommend Linode.com.  Choose their $5.00/month Ubuntu server.  Follow their instructions for logging in.  Then [install docker on Ubuntu](https://phoenixnap.com/kb/how-to-install-docker-on-ubuntu-18-04).  
 
 Once Docker is installed, here is the command to run the container.  
 
 ```
 docker run --name mosquitto -it \
-    -e DOMAIN=mosquitto.cloud-native.pl \
-    -e EMAIL=me@domain.com \
+    -e DOMAIN=www.your-domain.com \
+    -e EMAIL=your-email-address@your-domain.com \
     -e UID=$UID \
     -v letsencrypt:/root/.caddy \
     -v caddyfile:/etc/services.d/caddy/caddyfile \
@@ -23,26 +23,29 @@ docker run --name mosquitto -it \
     -p 8883:8883 \
      pythonlinks/letsencrypt-mosquitto:latest
 
+```
+ ###Where 
+     **docker run** runs the container <br>
+     **-it**runs it in the foreground.  That way you can watch what is happeneing. 
+     To run it in the backgroun, use **-d**.  <br>
+     **letsencrypt** is where the lets encrypt certificates and keys are stored. <br>
+     **caddyfile** is what you edit to change how the web server works <br>
+     **mosquitto.conf.template** is what you edit to change the configuration of the  <br>
+                             configuration of the mosquitto broker.
+```
+     You can then see where to find and edit the data volumes using 
+      docker volume inspect caddyfile
+      docker volume inspect mosquitto
 
-#  Where 
-#     letsencrypt is where the lets encrypt certificates and keys are stored.
-#     caddyfile is what you edit to change how the web server works
-#     mosquitto.conf.template is what you edit to change the configuration of the 
-#                             configuration of the mosquitto broker.
+    IF YOU WANT TO SERVE YOUR OWN WEB FILES ADD THE FOLLOWING LINE
+    -v /path/to/your/website/:/var/www\/ \
 
-#     You can then see where to find and edit the data volumes using 
-#      docker volume inspect caddyfile
-#      docker volume inspect mosquitto
-
-#    IF YOU WANT TO SERVE YOUR OWN WEB FILES ADD THE FOLLOWING LINE
-#    -v /path/to/your/website/:/var/www\/ \
-
-#    AND HERE IS DOCUMENTATION OF THE VARIOUS PORTS
-#    -p 80:80       # HTTP  serve files from /var/www
-#    -p 443:443     # HTTPS serve files from /var/www\#    -p 8080:8080   # WebSockets No Encryption 
-#    -p 8081:8081   # WebSockets Encrypted
-#    -p 1883:1883   # MQTT No Encryption 
-#    -p 8883:8883   # MQTT Encrypted/
+    AND HERE IS DOCUMENTATION OF THE VARIOUS PORTS
+    -p 80:80       # HTTP  serve files from /var/www
+    -p 443:443     # HTTPS serve files from /var/www\#    -p 8080:8080   # WebSockets No Encryption 
+    -p 8081:8081   # WebSockets Encrypted
+    -p 1883:1883   # MQTT No Encryption 
+    -p 8883:8883   # MQTT Encrypted/
 
 ```
 ## Permissions
