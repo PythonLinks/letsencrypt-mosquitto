@@ -80,6 +80,6 @@ docker volume inspect mosquitto
 
 ## Questions
 <p> Please <a href="mailto:lozinski@PythonLinks.info">send me an email</a>
-if you have any questions.  
+if you have any questions.  You can also raise issues or edit the documentation on the [github page](https://github.com/PythonLinks/letsencrypt-mosquitto/blob/master/README.md)
 </p>    
 
